@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'page.wsgi.application'
 DATABASES = {
     'default':{
       'ENGINE': 'django.db.backends.mysql',
-      'NAME':'buka_pages',
+      'NAME':'mypages',
       'USER':'aquiles',
-      'PASSWORD':'Guillermo981',
-      'HOST':'pages.cpomjifbdma6.us-east-2.rds.amazonaws.com',
+      'PASSWORD':'guillermo981',
+      'HOST':'mypages.cpomjifbdma6.us-east-2.rds.amazonaws.com',
       'PORT':'3306',
      }
 }

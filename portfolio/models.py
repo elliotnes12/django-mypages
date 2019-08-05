@@ -4,6 +4,21 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 
+class Sections(models.Model):
+      name = models.CharField(max_length = 50,verbose_name = "Nombre")
+      title = models.CharField(max_length = 50,verbose_name = "Titulo")
+      description = RichTextField(verbose_name = "Descripcion")
+      image = models.ImageField(verbose_name = "Imagen",upload_to = "sections",null = True,blank = True)
+      created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
+      updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
+    
+      class Meta:
+        verbose_name = "Seccion"
+        verbose_name_plural = "Secciones"
+        ordering = ["-created"]
+   
+      def __str__(self):
+        return self.name
 
 class Position(models.Model):
       name = models.CharField(max_length = 50,verbose_name = "Nombre")

@@ -6,7 +6,15 @@
 
 .hero{
 	position: relative;
+
+	ul,ol{
 	
+	   padding-left: 25px;
+
+	   li{
+		   list-style-type: circle;
+	   }
+	}
 	.hero-img{
 		position: relative;
 

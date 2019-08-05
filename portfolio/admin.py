@@ -1,6 +1,9 @@
 from django.contrib import admin
-from .models import Project,Deparment,Employee,Position,ProjectCategory
-# Register your models here.
+from .models import Project,Deparment,Employee,Position,ProjectCategory,Sections
+
+
+class SectionAdmin(admin.ModelAdmin):
+      readonly_fields = ("created","updated")
 
 class ProjectCategoryAdmin(admin.ModelAdmin):
       readonly_fields = ("created","updated")
@@ -26,6 +29,7 @@ class EmployeeAdmin(admin.ModelAdmin):
     employee_deparments.short_description = "departamento"
 
 
+admin.site.register(Sections,SectionAdmin)
 admin.site.register(Project,ProjectAdmin)
 admin.site.register(ProjectCategory,ProjectCategoryAdmin)
 admin.site.register(Position,PositionAdmin)
