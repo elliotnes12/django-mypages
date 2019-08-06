@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from portfolio.views import HomePageView 
 from django.conf import settings
-
+from contactapi.api import ContactView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomePageView.as_view()),
+    path('api/create_user',ContactView.as_view(),name = 'api_create_contact')
 ]
 
 if settings.DEBUG:

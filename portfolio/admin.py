@@ -1,5 +1,11 @@
 from django.contrib import admin
 from .models import Project,Deparment,Employee,Position,ProjectCategory,Sections
+from contactapi.models import Contact
+
+
+class ContactAdmin(admin.ModelAdmin):
+      readonly_fields = ("created","updated")
+      list_display = ("name","asunto","email")
 
 
 class SectionAdmin(admin.ModelAdmin):
@@ -28,7 +34,7 @@ class EmployeeAdmin(admin.ModelAdmin):
 
     employee_deparments.short_description = "departamento"
 
-
+admin.site.register(Contact,ContactAdmin)
 admin.site.register(Sections,SectionAdmin)
 admin.site.register(Project,ProjectAdmin)
 admin.site.register(ProjectCategory,ProjectCategoryAdmin)

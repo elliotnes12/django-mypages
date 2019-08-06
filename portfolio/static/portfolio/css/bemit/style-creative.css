@@ -450,6 +450,51 @@ span, a, a:hover {
 .bg-gray {
   background: #f7f7f7; }
 
+.o-form-mensaje__cancel {
+  display: block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  top: -41px; }
+
+.o-form-mensaje {
+  line-height: 50px;
+  display: none;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 50%;
+  margin: 20px auto;
+  color: #fff;
+  -webkit-box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.25); }
+  @media screen and (min-width: 1200px) {
+    .o-form-mensaje {
+      -webkit-transform: skew(20deg);
+      -ms-transform: skew(20deg);
+      transform: skew(20deg); } }
+  .o-form-mensaje span {
+    font-family: "Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    display: block; }
+    @media screen and (min-width: 1200px) {
+      .o-form-mensaje span {
+        -webkit-transform: skew(-20deg);
+        -ms-transform: skew(-20deg);
+        transform: skew(-20deg); } }
+
+@-webkit-keyframes viewdisplay {
+  2 {
+    display: -webkit-box !important;
+    display: flex !important; } }
+
+@keyframes viewdisplay {
+  2 {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important; } }
+
 .o-hidden {
   overflow: hidden; }
 
@@ -1197,7 +1242,7 @@ footer {
 
 /*
 *
- * Capa Utilidades
+ * Capa Utilidade
 *
 */
 .flex-x-center {

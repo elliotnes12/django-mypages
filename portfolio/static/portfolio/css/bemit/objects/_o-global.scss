@@ -3,6 +3,44 @@
 	background: #f7f7f7;
 }
 
+
+.o-form-mensaje__cancel{
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: -41px;
+}
+
+.o-form-mensaje{
+  
+
+  line-height: 50px;
+  display: none;
+  justify-content: center;
+  width: 50%;
+  margin: 20px auto;
+  color: #fff;
+  box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  @include full{
+    transform: skew(20deg);
+  }
+  span{
+    font-family: "Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    display: block;
+    @include full{
+      transform: skew(-20deg);
+    }
+  }
+}
+@keyframes viewdisplay {
+  2 {
+   display:flex !important;
+  }
+  
+}
 .o-hidden {
 	overflow: hidden;
 }
