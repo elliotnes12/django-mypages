@@ -1,12 +1,23 @@
 from django.contrib import admin
-from .models import Project,Deparment,Employee,Position,ProjectCategory,Sections
+from .models import Project,Deparment,Employee,Position,ProjectCategory,Sections,Skills
 from contactapi.models import Contact
+from .models import Category,Post
 
+
+
+class CategoryAdmin(admin.ModelAdmin):
+      readonly_fields = ("created","updated")
+
+class PostAdmin(admin.ModelAdmin):
+      readonly_fields = ("created","updated")
 
 class ContactAdmin(admin.ModelAdmin):
       readonly_fields = ("created","updated")
       list_display = ("name","asunto","email")
 
+class SkillsAdmin(admin.ModelAdmin):
+      readonly_fields = ("created","updated")
+      list_display = ("name",)
 
 class SectionAdmin(admin.ModelAdmin):
       readonly_fields = ("created","updated")
@@ -34,7 +45,12 @@ class EmployeeAdmin(admin.ModelAdmin):
 
     employee_deparments.short_description = "departamento"
 
+
+
+admin.site.register(Category,CategoryAdmin)
+admin.site.register(Post,PostAdmin)
 admin.site.register(Contact,ContactAdmin)
+admin.site.register(Skills,SkillsAdmin)
 admin.site.register(Sections,SectionAdmin)
 admin.site.register(Project,ProjectAdmin)
 admin.site.register(ProjectCategory,ProjectCategoryAdmin)

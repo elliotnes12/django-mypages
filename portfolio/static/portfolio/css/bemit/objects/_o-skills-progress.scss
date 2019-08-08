@@ -46,7 +46,8 @@
 
 .skill-item{
     margin-bottom: 20px;
-
+    display:block;
+    overflow: hidden;
     &:last-child{
         margin-bottom: 0;
     }
@@ -55,6 +56,14 @@
         font-size: 14px;
         font-weight: 500;
         margin-bottom: 10px;
+    }
+
+    &__etq{
+        color: #fff;
+        background: #1469aa;
+        padding: 6px;
+        float: left;
+        margin: 0 3% 10px 0;
     }
 }
 .skill-title{
