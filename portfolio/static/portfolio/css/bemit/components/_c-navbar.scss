@@ -78,16 +78,19 @@
 			}
 		}
 
-		.logo{
+		.bk-logo{
 			padding: 15px 0;
 			color: #111;
 		}
 	}
 }
 
-.logo{
-	padding: 15px 0;
-	width: 100px;
-	color: #fff;
-	font-size: 20px;
+
+.bk{
+	&-logo{
+		padding: 15px 0;
+		width: 100px;
+		color: #fff;
+		font-size: 20px;
+	}
 }

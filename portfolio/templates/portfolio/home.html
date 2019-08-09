@@ -16,7 +16,7 @@
         
         {% load static  %}
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="img/favicon.ico" />
+		<link rel="shortcut icon" href="{% static 'portfolio/img/logo-buka.ico' %}" />
 
 		<!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
@@ -57,8 +57,8 @@
 			<div class="container">
 
             <!-- Logo -->
-            <a class="logo" href="#">
-                <img src="{% static 'core/img/logo-light.png' %}" alt="logo">          
+            <a class="bk-logo" href="#">
+                <img src="{% static 'portfolio/img/logo-buka.png' %}" alt="logo-buka">          
             </a>
 
 			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,11 +80,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#" data-scroll-nav="3">Portafolio</a>
                   </li>
-                  <!--
-			      <li class="nav-item">
-			        <a class="nav-link" href="#" data-scroll-nav="4">Testimonios</a>
-			      </li>
-                  -->
 			      <li class="nav-item">
 			        <a class="nav-link" href="#" data-scroll-nav="5">Blog</a>
 			      </li>
@@ -335,52 +330,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- End Works ====
-        ======================================= -->
-
-
-        <!-- =====================================
-        ==== Start Testimonials -->
-<!--
-        <section class="testimonials carousel-single section-padding bg-img" data-scroll-index="4" data-overlay-dark="5" data-background="img/2.jpg">
-            <div class="container">
-                <div class="row">
-
-                    <div class="text-center col-lg-12">
-                        <span class="icon ti-quote-left"></span>
-                    </div>
-
-                    <div class="owl-carousel owl-theme offset-lg-1 col-lg-10 text-center">
-                        <div class="item">
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived not only five centuries.</p>
-                            <h6>Alex Smith</h6>
-                            <h5>Envato customer</h5>
-                        </div>
-                        <div class="item">
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived not only five centuries.</p>
-                            <h6>Alex Smith</h6>
-                            <h5>Envato customer</h5>
-                        </div>
-                        <div class="item">
-                            <p>Lorem Ipsum is simply dummy text of the printing and type setting industry when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived not only five centuries.</p>
-                            <h6>Alex Smith</h6>
-                            <h5>Envato customer</h5>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
--->
-        <!-- End Testimonials ====
-        ======================================= -->
-
-
-        <!-- =====================================
-        ==== Start Blog -->
         
-        <section class="blog section-padding bg-gray" data-scroll-index="5">
+        <section class="c-bk-blog section-padding bg-gray" data-scroll-index="5">
             <div class="container">
                 <div class="row">
                     
@@ -390,17 +341,17 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <div class="item mb-md50">
+                        <div class="c-bk-blog__item mb-md50">
                           {% for post in posts %}
-                            <div class="post-img">
+                            <div class="c-bk-blog__post-img">
                                 <div class="img">
                                     <img src="{{post.image.url}}" alt="">
                                 </div>
                             </div>
-                            <div class="cont">
-                                <div class="skill-item">
+                            <div class="c-bk-blog__cont">
+                                <div class="c-bk-blog__categories">
                                     {%for cat in post.categories.all %}
-                                        <span class="skill-item__etq">{{cat.name}}</span>
+                                        <span class="c-bk-blog__categories__item">{{cat.name}}</span>
                                     {% endfor %}
                                 </div>
                                 <h6>{{post.title}}</h6>
@@ -422,7 +373,7 @@
         <!-- =====================================
         ==== Start Contact -->
 
-        <section class="contact section-padding" id="contact" data-scroll-index="6">
+        <section class="c-bk-contact section-padding" id="contact" data-scroll-index="6">
             <div class="container">
                 <div class="row">
                     
@@ -432,7 +383,7 @@
                     </div>
 
                     <div class="offset-lg-1 col-lg-10">
-                        <form class="form" id="contact-form" method="post" action="contact.php">
+                        <form class="c-bk-contact__form" id="contact-form" method="post" action="contact.php">
 
                             <input type="hidden" id="token" value="{{csrf_token}}" />
                             <div v-bind:style="{ backgroundColor: errbgColorm,color:errcolorm,borderColor:errborm,display:displaym}" class="o-form-mensaje">
@@ -485,7 +436,7 @@
         <!-- =====================================
         ==== Start Footer -->
 
-        <footer class="bg-img bg-fixed" data-overlay-dark="5" data-background="{% static 'portfolio/img/contact.jpg' %}">
+        <footer class="c-bk-footer bg-img bg-fixed" data-overlay-dark="5" data-background="{% static 'portfolio/img/contact.jpg' %}">
             <div class="container">
                 <div class="row">
                     
