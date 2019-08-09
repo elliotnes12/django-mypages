@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'portfolio.apps.PortfolioConfig',
     'rest_framework',
-    'contactapi'
+    'contactapi',
+    'google_analytics'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     )
 }
-
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': 'UA-145393588-1',
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

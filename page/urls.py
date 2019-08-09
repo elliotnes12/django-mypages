@@ -14,14 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include,re_path
 from portfolio.views import HomePageView 
 from django.conf import settings
 from contactapi.api import ContactView
+from django.views.generic import TemplateView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomePageView.as_view()),
-    path('api/create_user',ContactView.as_view(),name = 'api_create_contact')
+    path('api/create_user',ContactView.as_view(),name = 'api_create_contact'),
+    re_path(r'^djga/', include('google_analytics.urls')),
+    re_path(r'^robots\.txt$', TemplateView.as_view(template_name="portfolio/robots.txt", content_type='text/plain')),
 ]
 
 if settings.DEBUG:
