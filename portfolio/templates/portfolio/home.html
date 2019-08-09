@@ -152,7 +152,7 @@
                     <div class="col-lg-5">
                         <div class="hero-img mb-md50">
                             <div class="img">
-                                <img src="{{ sectionSomos.image.url }}" alt="">
+                                <img src="{{ sectionSomos.image.url }}" alt="img-about-us">
                             </div>
                         </div>
                     </div>
@@ -305,7 +305,7 @@
                         <!-- gallery item -->
                         <div class="col-lg-3 col-md-6 items web brand graphic">
                             <div class="item-img">
-                                <img src="{{ project.image.url }}" alt="image">
+                                <img src="{{ project.image.url }}" alt="img-project-success">
                                 <div class="item-img-overlay valign">
                                     <div class="overlay-info full-width vertical-center">
                                         <h6>{{project.title}}</h6>
@@ -331,7 +331,7 @@
             </div>
         </section>
         
-        <section class="c-bk-blog section-padding bg-gray" data-scroll-index="5">
+        <section class="c-bk-blog blog section-padding bg-gray" data-scroll-index="5">
             <div class="container">
                 <div class="row">
                     
@@ -388,7 +388,7 @@
                             <input type="hidden" id="token" value="{{csrf_token}}" />
                             <div v-bind:style="{ backgroundColor: errbgColorm,color:errcolorm,borderColor:errborm,display:displaym}" class="o-form-mensaje">
                                <span v-html="log"></span>
-                               <span v-on:click="cancel" class="o-form-mensaje__cancel"><img src="{% static 'portfolio/img/cancel.png' %}" /></span>
+                               <span v-on:click="cancel" class="o-form-mensaje__cancel"><img src="{% static 'portfolio/img/cancel.png' %}" alt="close" /></span>
                             </div>
 
                             <div class="controls">
