@@ -21,9 +21,9 @@ class Post(models.Model):
       title = models.CharField(max_length = 200,verbose_name = "Titulo")
       content = RichTextField(verbose_name = "Contenido")
       published = models.DateTimeField(verbose_name = "Fecha publicacion",default = now)
-      image = models.ImageField(verbose_name = "Imagen",upload_to = "post",null = True,blank = True)
+      image = models.ImageField(verbose_name = "Imagen",upload_to = "posts",null = True,blank = True)
       author = models.ForeignKey(User,verbose_name = "autor",on_delete = models.CASCADE)
-      categories = models.ManyToManyField(Category,verbose_name = "categoria")
+      categoria = models.ForeignKey(Category,verbose_name = "categoria",on_delete = models.CASCADE)
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
     

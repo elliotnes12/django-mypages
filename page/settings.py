@@ -25,8 +25,12 @@ SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
-
+if DEBUG: 
+        ALLOWED_HOSTS = ['127.0.0.1']
+        BASE_URL = '127.0.0.1'
+else:
+       ALLOWED_HOSTS = ['www.bukasystem.com']
+       BASE_URL = 'www.bukasystem.com'
 
 # Application definition
 

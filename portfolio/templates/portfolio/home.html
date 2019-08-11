@@ -14,10 +14,9 @@
 		<meta name="author" content="BukaSystem" />
         <meta http-equiv="imagetoolbar" content="no" />
         <meta http-equiv="X-UA-Compatible" content="chrome=IE8" />
-        <base href="http://www.bukasystem.com" />
+        <base href="{{baseURL}}" />
 		<title>Especialistas en desarrollo web: Consultoria BukaSystem</title>
-
-        
+ 
         {% load google_analytics_tags %}
         {% load static  %}
 		<!-- Favicon -->
@@ -105,7 +104,7 @@
     	<!-- =====================================
     	==== Start Header -->
 
-    	<header class="header creative valign bg-img" data-scroll-index="0" data-overlay-dark="5" data-background="{{ sectionHeader.image.url }}" data-stellar-background-ratio="0.5">
+    	<header class="header creative valign bg-img" data-scroll-index="0" data-overlay-dark="5" data-background="{{ header.image.url }}" data-stellar-background-ratio="0.5">
 
             <div class="svg">
                 <svg x="0px" y="0px" viewBox="0 186.5 1920 113.5">
@@ -118,9 +117,9 @@
     				<div class="offset-lg-1 col-lg-10 text-center caption mt-50">
                         <h6>bienvenido</h6>
                         <h1 class="cd-headline">
-                            <span class="blc">{{sectionHeader.title}}</span>
+                            <span class="blc">{{header.title}}</span>
                         </h1>
-                        <div>{{sectionHeader.description | safe}}</div>
+                        <div>{{header.description | safe}}</div>
                         <div class="social mt-15">
                             <a href="#0" class="icon">
                                 <i class="fab fa-facebook-f"></i>
@@ -155,22 +154,24 @@
         <section class="hero section-padding" data-scroll-index="1">
             <div class="container">
                 <div class="row">
-                    
+                    {% if about %}
                     <div class="col-lg-5">
                         <div class="hero-img mb-md50">
                             <div class="img">
-                                <img src="{{ sectionSomos.image.url }}" alt="img-about-us">
+                                <img src="{{ about.image.url }}" alt="img-about-us">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-7">
                         <div class="content">
-                            <h3>{{sectionSomos.title}}</h3>
-                            <p class="mb-10">{{sectionSomos.description | safe}}</p>
+                           {% if about.title and about.description  %}
+                            <h3>{{about.title}}</h3>
+                            <p class="mb-10">{{about.description | safe}}</p>
+                           {% endif %}
                         </div>
                     </div>
-
+                    {% endif %}
                 </div>
             </div>
         </section>
@@ -299,7 +300,7 @@
                     <div class="filtering text-center mb-20 col-sm-12">
                         <div class="filter">
                             <span data-filter='*' class="active">All</span>
-                          {% for categoria in catProyecto%}
+                          {% for categoria in projectsCAT %}
                             <span data-filter='.{{categoria.name}}'>{{categoria.name}}</span>
                           {% endfor %}
                         </div>
@@ -357,9 +358,7 @@
                             </div>
                             <div class="c-bk-blog__cont">
                                 <div class="c-bk-blog__categories">
-                                    {%for cat in post.categories.all %}
-                                        <span class="c-bk-blog__categories__item">{{cat.name}}</span>
-                                    {% endfor %}
+                                    <span class="c-bk-blog__categories__item">{{post.categoria.name}}</span>
                                 </div>
                                 <h6>{{post.title}}</h6>
                                 <div>{{post.content | safe}}</div>
