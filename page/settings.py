@@ -24,6 +24,7 @@ SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+HomeTitle = 'Consultoria Web BukaSystem en metodologia agil'
 
 if DEBUG: 
         ALLOWED_HOSTS = ['127.0.0.1']
