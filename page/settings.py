@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -23,15 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 HomeTitle = 'Consultoria Web BukaSystem en metodologia agil'
 
-if DEBUG: 
-        ALLOWED_HOSTS = ['127.0.0.1']
-        BASE_URL = '127.0.0.1'
-else:
-       ALLOWED_HOSTS = ['www.bukasystem.com']
-       BASE_URL = 'www.bukasystem.com'
+ALLOWED_HOSTS = ['127.0.0.1']
+BASE_URL = '127.0.0.1'
 
 # Application definition
 
@@ -137,6 +134,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+STATIC_ROOT = '/home/elliotnes12/django-mypages/static'
+
 
 
 CKEDITOR_CONFIGS = {

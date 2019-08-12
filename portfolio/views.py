@@ -9,7 +9,7 @@ class HomePageView(TemplateView):
       def get(self,request,*args,**kwargs):
           post = Post.objects.all()
           base = settings.BASE_URL
-          hometitle = settings.HomeTitle
+          hometitle = 'Titulo'
           categoria_proyectos = ProjectCategory.objects.all()
           section_somos = Sections.objects.get(name = "QuienesSomos")
           section_header = Sections.objects.get(name = "cabecera")
