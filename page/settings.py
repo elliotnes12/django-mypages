@@ -24,11 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 HomeTitle = 'Consultoria Web BukaSystem en metodologia agil'
 
-ALLOWED_HOSTS = ['127.0.0.1']
-BASE_URL = '127.0.0.1'
+ALLOWED_HOSTS = ['www.bukasystem.com']
+BASE_URL = 'www.bukasystem.com'
 
 # Application definition
 
@@ -132,10 +132,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "../media/")
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-STATIC_ROOT = '/home/elliotnes12/django-mypages/static'
-
 
 
 CKEDITOR_CONFIGS = {

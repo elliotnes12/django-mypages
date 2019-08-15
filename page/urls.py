@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
-from portfolio.views import HomePageView 
+from portfolio.views import HomePageView
 from django.conf import settings
 from contactapi.api import ContactView
 from django.views.generic import TemplateView
@@ -28,6 +28,5 @@ urlpatterns = [
     re_path(r'^robots\.txt$', TemplateView.as_view(template_name="portfolio/robots.txt", content_type='text/plain')),
 ]
 
-if settings.DEBUG:
-    from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+from django.conf.urls.static import static
+urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

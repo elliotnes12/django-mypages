@@ -3,12 +3,16 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from PIL import Image
+from io import BytesIO
+import sys
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 class Category(models.Model):
       name = models.CharField(max_length = 50,verbose_name = "Nombre")
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
       class Meta:
         verbose_name = "Categoria"
         verbose_name_plural = "Categorias"
@@ -26,7 +30,7 @@ class Post(models.Model):
       categoria = models.ForeignKey(Category,verbose_name = "categoria",on_delete = models.CASCADE)
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
       class Meta:
         verbose_name = "Post"
         verbose_name_plural = "Post"
@@ -39,12 +43,12 @@ class Skills(models.Model):
       name = models.CharField(max_length = 50,verbose_name = "Nombre")
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
       class Meta:
         verbose_name = "Habilidad"
         verbose_name_plural = "Habilidades"
         ordering = ["-created"]
-   
+
       def __str__(self):
         return self.name
 
@@ -55,12 +59,27 @@ class Sections(models.Model):
       image = models.ImageField(verbose_name = "Imagen",upload_to = "sections",null = True,blank = True)
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
+
+      def save(self, *args, **kwargs):
+
+          self.image = self.compressImage(self.image)
+          super(Sections, self).save(*args, **kwargs)
+
+      def compressImage(self,uploadedImage):
+          imageTemproary = Image.open(uploadedImage)
+          outputIoStream = BytesIO()
+          imageTemproaryResized = imageTemproary.resize( (1020,573) )
+          imageTemproary.save(outputIoStream , format='JPEG', quality=60)
+          outputIoStream.seek(0)
+          uploadedImage = InMemoryUploadedFile(outputIoStream,'ImageField', "%s.jpg" % uploadedImage.name.split('.')[0], 'image/jpeg', sys.getsizeof(outputIoStream), None)
+          return uploadedImage
+
       class Meta:
         verbose_name = "Seccion"
         verbose_name_plural = "Secciones"
         ordering = ["-created"]
-   
+
       def __str__(self):
         return self.name
 
@@ -68,12 +87,12 @@ class Position(models.Model):
       name = models.CharField(max_length = 50,verbose_name = "Nombre")
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
       class Meta:
         verbose_name = "Posicion"
         verbose_name_plural = "Posiciones"
         ordering = ["-created"]
-   
+
       def __str__(self):
         return self.name
 
@@ -81,12 +100,12 @@ class Deparment(models.Model):
      name = models.CharField(max_length = 50,verbose_name = "Nombre")
      created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
      updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
      class Meta:
         verbose_name = "Departamento"
         verbose_name_plural = "Departamentos"
         ordering = ["-created"]
-   
+
      def __str__(self):
         return self.name
 
@@ -94,28 +113,28 @@ class Employee(models.Model):
     name = models.CharField(max_length=50,verbose_name="Nombre")
     deparment = models.ForeignKey(Deparment,verbose_name = "Departamento",on_delete = models.CASCADE)
     position = models.ForeignKey(Position,verbose_name="Posicion",on_delete = models.CASCADE)
-    createdby = models.ForeignKey(User,verbose_name = "Creado por",on_delete = models.CASCADE)  
+    createdby = models.ForeignKey(User,verbose_name = "Creado por",on_delete = models.CASCADE)
     description = RichTextField(verbose_name = "Descripcion")
     skills = models.ManyToManyField(Skills,verbose_name = "Habilidades")
     image = models.ImageField(verbose_name = "Imagen",upload_to = "team")
     created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
     updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-    
+
     class Meta:
         verbose_name = "Empleado"
         verbose_name_plural = "Empleados"
         ordering = ["-created"]
-   
+
     def __str__(self):
         return self.name
 
 
 class ProjectCategory(models.Model):
       name = models.CharField(max_length=50,verbose_name = "Nombre")
-      metadata = models.CharField(max_length=20,verbose_name = "TagName",null = True,blank = True) 
+      metadata = models.CharField(max_length=20,verbose_name = "TagName",null = True,blank = True)
       created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
       updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")
-     
+
 
       class Meta:
         verbose_name = "ProyectoCategoria"
