@@ -3,6 +3,11 @@ from .models import Project,Employee,ProjectCategory,Sections,Post,Category
 from django.views.generic.base import TemplateView
 from django.conf import settings
 
+
+class NotFoundException(TemplateView):
+      template_name = "portfolio/404.html"
+      
+
 class HomePageView(TemplateView):
       template_name = "portfolio/home.html"
       #Contiene la respuesta completa de la peticion
