@@ -148,7 +148,7 @@ class ProjectCategory(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=50,verbose_name= "Titulo")
     description = RichTextField(verbose_name = "Descripcion")
-    image = models.ImageField(verbose_name = "Imagen",upload_to = "projects")
+    image = models.FileField(verbose_name = "Imagen",upload_to = "projects")
     link = models.URLField(null = True,blank = True,verbose_name ="url")
     created = models.DateTimeField(auto_now_add=True,verbose_name = "Creado")
     updated = models.DateTimeField(auto_now=True,verbose_name = "Actualizado")

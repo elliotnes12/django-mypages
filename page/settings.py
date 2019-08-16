@@ -17,6 +17,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 
+AWS_ACCESS_KEY_ID = 'AKIA3N5LWZA4LKBG6O5A'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'static-bukasystem'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -24,11 +33,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 HomeTitle = 'Consultoria Web BukaSystem en metodologia agil'
 
-ALLOWED_HOSTS = ['www.bukasystem.com']
-BASE_URL = 'www.bukasystem.com'
+if DEBUG == False:
+    ALLOWED_HOSTS = ['*']
+    BASE_URL = '127.0.0.1'
+else:
+    ALLOWED_HOSTS = ['www.bukasystem.com']
+    BASE_URL = 'www.bukasystem.com'
 
 # Application definition
 
@@ -38,26 +51,32 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'core',
     'ckeditor',
     'portfolio.apps.PortfolioConfig',
     'rest_framework',
     'contactapi',
-    'google_analytics'
+    'google_analytics',
+    'storages',
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'page.urls'
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -131,9 +150,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "../media/")
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'page.storage_backends.MediaStorage' 
 
 
 CKEDITOR_CONFIGS = {
