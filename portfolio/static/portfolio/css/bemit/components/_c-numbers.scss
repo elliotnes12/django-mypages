@@ -3,8 +3,23 @@
      [Start Numbers ]
 -----------------------------------------------------------------*/
 
-.numbers{
+.c-numbers{
 	padding: 80px 0;
+
+
+	&__pilar{
+		 display:block;
+		 width:100px;
+		 height:100%;
+         margin:0px auto;
+	}
+	&__img-pilar{
+         max-width:100%;
+	}
+	&__count{
+		font-size: 2.5rem;
+        color: #fff;
+	}
 
 	&.minimal{
 

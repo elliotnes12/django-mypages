@@ -33,10 +33,10 @@ AWS_LOCATION = 'static'
 SECRET_KEY = ')dl-p39f8kt4h8^w^^*p))kgez3&#mut@qs90&+9&o=0mwu!x3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 HomeTitle = 'Consultoria Web BukaSystem en metodologia agil'
 
-if DEBUG == False:
+if DEBUG == True:
     ALLOWED_HOSTS = ['*']
     BASE_URL = '127.0.0.1'
 else:
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
@@ -61,6 +63,8 @@ INSTALLED_APPS = [
     'google_analytics',
     'storages',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
 
